@@ -1,2 +1,28 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import Scene2 from '$lib/Scene2.svelte';
+
+  let players: {
+    y: number;
+    x: number;
+  }[] = [];
+  function addPlayer() {
+    players = [...players, { x: 50, y: 50 }];
+  }
+  function removePlayer() {
+    players = players.slice(0, -1);
+  }
+</script>
+
+<button on:click={addPlayer}>Add</button><button on:click={removePlayer}>Remove</button>
+
+<div class="scene-container">
+  <!-- <Scene {players} /> -->
+  <Scene2 {players} />
+</div>
+
+<style>
+  .scene-container {
+    width: 100%;
+    height: 90vh;
+  }
+</style>
