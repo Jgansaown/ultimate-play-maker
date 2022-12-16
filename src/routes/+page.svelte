@@ -13,6 +13,8 @@
   }
 </script>
 
+<h1 class="text-3xl font-bold underline">Hello world!</h1>
+
 <button on:click={addPlayer}>Add</button><button on:click={removePlayer}>Remove</button>
 
 <div class="scene-container">
@@ -24,5 +26,9 @@
   .scene-container {
     width: 100%;
     height: 90vh;
+  }
+
+  button {
+    @apply rounded-md border-2 border-black border-solid px-2 mx-2;
   }
 </style>
