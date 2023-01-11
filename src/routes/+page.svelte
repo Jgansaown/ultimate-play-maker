@@ -1,34 +1,30 @@
 <script lang="ts">
-  import Scene2 from '$lib/Scene2.svelte';
+  import { onMount } from 'svelte';
+  import Scene from '$lib/scene/Scene.svelte';
 
-  let players: {
-    y: number;
-    x: number;
-  }[] = [];
-  function addPlayer() {
-    players = [...players, { x: 50, y: 50 }];
-  }
-  function removePlayer() {
-    players = players.slice(0, -1);
-  }
+  onMount(() => {});
+
+  let orientation: 'vert' | 'hori' = 'vert';
 </script>
 
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
+<button
+  on:click={() => {
+    orientation = orientation === 'vert' ? 'hori' : 'vert';
+  }}>Toggle</button
+>
 
-<button on:click={addPlayer}>Add</button><button on:click={removePlayer}>Remove</button>
-
-<div class="scene-container">
-  <!-- <Scene {players} /> -->
-  <Scene2 {players} />
+<div id="container">
+  <Scene
+    config={{
+      orientation: orientation
+    }}
+    players={[]}
+  />
 </div>
 
-<style>
-  .scene-container {
+<style lang="postcss">
+  #container {
     width: 100%;
     height: 90vh;
-  }
-
-  button {
-    @apply rounded-md border-2 border-black border-solid px-2 mx-2;
   }
 </style>
